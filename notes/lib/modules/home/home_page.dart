@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:notes/components/custom_button.dart';
 import 'package:notes/components/custom_note_tile.dart';
 import 'package:notes/models/note_model.dart';
+import 'package:notes/modules/home/widgets/app_bar_widget.dart';
+import 'package:notes/modules/login/models/user_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,17 +16,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final UserModel user =
+        ModalRoute.of(context)!.settings.arguments as UserModel;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('NOTES'),
-        centerTitle: true,
-      ),
-      body: CustomNoteTile(
-        notes: notes,
-      ),
-      floatingActionButton: CustomButton(
-        iconData: Icons.add,
-        onPressed: () async {
+      appBar: AppBarWidget(
+        user: user,
+        onTap: () async {
           var description = await Navigator.pushNamed(context, "/create-note");
           if (description != null) {
             NoteModel note = description as NoteModel;
@@ -33,6 +29,9 @@ class _HomePageState extends State<HomePage> {
             setState(() {});
           }
         },
+      ),
+      body: CustomNoteTile(
+        notes: notes,
       ),
     );
   }
