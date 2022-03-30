@@ -1,4 +1,3 @@
 # notes
-
-A new Flutter project.
+Foi implementado Fluxo de login no  no aplicativo de notas
 
