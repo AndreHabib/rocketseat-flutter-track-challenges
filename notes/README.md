@@ -1,3 +1,3 @@
 # notes
-Foi implementado Fluxo de login no  no aplicativo de notas
+Foi implementado Fluxo de login no aplicativo de notas
 
